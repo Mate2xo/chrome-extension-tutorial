@@ -1,20 +1,32 @@
 {
   "name": "extension-react",
   "version": "0.0.1",
+  "private": true,
   "description": "Zaratan tutorial for creating a browser extension with React",
   "main": "popup.js",
   "dependencies": {
-    "core-js": "^3.3.2"
+    "core-js": "^3.3.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3"
+    "@babel/preset-react": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel": "babel"
+    "babel": "babel",
+    "build": "webpack"
   },
   "author": "Tim",
   "license": "MIT"
