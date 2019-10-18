@@ -5,5 +5,8 @@
   "description": "Zaratan react extension tutorial",
   "browser_action": {
     "default_popup": "popup.html"
-  }
+  },
+  "permissions": [
+    "storage"
+  ]
 }

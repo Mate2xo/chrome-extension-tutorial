@@ -1,6 +1,6 @@
 {
   "name": "extension-react",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "private": true,
   "description": "Zaratan tutorial for creating a browser extension with React",
   "main": "popup.js",

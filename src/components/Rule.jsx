@@ -1,23 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-export default function Rule({checkedRulesCount, setCheckedRulesCount, text, i}) {
+export default function Rule({ checkedRules, setCheckedRules, rule }) {
+  const checked = checkedRules.includes(rule.id);
 
-  const actOnClick = e => {
-    const new_value = checkedRulesCount + (e.currentTarget.checked ? 1 : -1);
-    console.log(new_value);
-    setCheckedRulesCount(new_value);
-  }
+  const prepareUpdatedRules = ruleId => {
+    if (checked) return checkedRules.filter(id => id !== ruleId);
+    else return [ruleId, ...checkedRules];
+  };
+
+  const storeRuleChange = e => {
+    e.preventDefault;
+    const newRules = prepareUpdatedRules(rule.id);
+    setCheckedRules(newRules);
+
+    const rulesToStore = {};
+    rulesToStore[window.location.host] = newRules;
+    chrome.storage.sync.set(rulesToStore);
+  };
 
   return (
-    <li key={i}>
-      <input type="checkbox" onClick={actOnClick}/>{text}
+    <li>
+      <input type="checkbox" onClick={storeRuleChange} checked={checked} />
+      {rule.text}
     </li>
-  )
-};
+  );
+}
 
 Rule.propTypes = {
-  checkedRulesCount: PropTypes.number.isRequired,
-  setCheckedRulesCount: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  checkedRules: PropTypes.array.isRequired,
+  setCheckedRules: PropTypes.func.isRequired,
+  rule: PropTypes.any.isRequired
 };
